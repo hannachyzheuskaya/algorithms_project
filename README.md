@@ -1,6 +1,7 @@
 # Highway Planner
 
 Algorithms and Data Structures — Final Project (2022–2023)
+Politecnico di Milano
 
 ## Description
 

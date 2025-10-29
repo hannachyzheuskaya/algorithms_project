@@ -1,4 +1,4 @@
-Final Project C(2022–2023)
+# Highway Planner – Final Project (2022–2023)
 
 ## Description
 
@@ -13,6 +13,7 @@ Key technical constraints and choices:
 
 - **Language standard:** C11
 - **Libraries:** only the Standard C Library (`libc`) is used
+- **Concurrency:** no multithreading is used
 - **I/O model:**
   - Input is provided via `stdin`
   - Output is written to `stdout`
@@ -46,32 +47,11 @@ So the system answers the question:
 The program supports a set of text commands to manage the highway and to plan routes.  
 All commands are read from `stdin`, and each command produces a deterministic response on `stdout`.
 
-### `aggiungi-stazione`
-
-Adds a new service station to the highway.
-
-The station is characterized by:
-
-- its distance from the start of the highway
-- a set of electric vehicles, each with a given range
-
-### `demolisci-stazione`
-
-Removes an existing service station, identified by its distance.
-
-### `aggiungi-auto`
-
-Adds an electric vehicle (with a specified autonomy / range) to an existing service station.
-
-### `rottama-auto`
-
-Removes (“scraps”) a specific electric vehicle from a given service station.
-
-### `pianifica-percorso`
-
-Computes and returns the route with the **minimum number of legs** between two given stations.
-
-The output of this command represents the planned sequence of stations to visit in order to travel from the origin to the destination under the movement rules described above.
+- `aggiungi-stazione` : Adds a new service station to the highway with a specific distance and an initial set of electric vehicles, each with a defined range.
+- `demolisci-stazione` : Removes an existing service station, identified by its distance.
+- `aggiungi-auto` : Adds an electric vehicle (with a specified autonomy / range) to an existing service station.
+- `rottama-auto` : Scraps (removes) a specific electric vehicle from a given service station.
+- `pianifica-percorso` : Computes the route with the minimum number of legs between two given stations.
 
 ## Tie-breaking Rule for Ambiguous Paths
 
@@ -82,3 +62,30 @@ When two or more candidate routes have equal length, the implementation applies 
 > Among the shortest routes, prefer the one that, in its final portion, visits stations that are **closer to the beginning of the highway** (i.e. stations with a lower distance value).
 
 This ensures that results are consistent and reproducible even in the presence of multiple optimal solutions.
+
+---
+
+## Example Usage
+
+Below is an example session showing input commands and the corresponding program output.
+
+### Input
+
+```text
+aggiungi-stazione 20 3 5 10 15
+aggiungi-stazione 4 3 1 2 3
+aggiungi-stazione 30 0
+demolisci-stazione 3
+demolisci-stazione 4
+aggiungi-auto 30 40
+aggiungi-stazione 50 3 20 25 7
+rottama-auto 20 8
+rottama-auto 9999 5
+rottama-auto 50 7
+pianifica-percorso 20 30
+pianifica-percorso 20 50
+pianifica-percorso 50 30
+pianifica-percorso 50 20
+aggiungi-auto 50 30
+pianifica-percorso 50 20
+```

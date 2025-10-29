@@ -1,4 +1,6 @@
-# Highway Planner – Final Project (2022–2023)
+# Highway Planner
+
+Algorithms and Data Structures — Final Project (2022–2023)
 
 ## Description
 
@@ -89,3 +91,44 @@ pianifica-percorso 50 20
 aggiungi-auto 50 30
 pianifica-percorso 50 20
 ```
+
+### Output
+
+```text
+aggiunta
+aggiunta
+aggiunta
+non demolita
+demolita
+aggiunta
+aggiunta
+non rottamata
+non rottamata
+rottamata
+20 30
+20 30 50
+50 30
+50 30 20
+aggiunta
+
+```
+
+## Reference Materials
+
+- `main.c` : main program implementation.
+- `project_specification.pdf` : detailed description of all functional requirements.
+- `test.py` : Python script used to execute the provided tests.
+
+## Tools used
+
+- Valgrind;
+- Callgrind;
+- Massif-Visualizer;
+- Address-Sanitizer;
+- GDB;
+- GCC.
+
+## Software used
+
+- Clion;
+- Visual Studio Code.
